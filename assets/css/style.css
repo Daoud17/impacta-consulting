@@ -1,0 +1,5899 @@
+/* =========================================================
+   IMPACTA CONSULTING - GLOBAL STYLES
+========================================================= */
+
+:root {
+    --primary: #173b70;
+    --primary-dark: #0d2347;
+    --secondary: #e51b2b;
+    --white: #ffffff;
+    --text: #27364c;
+
+    --header-height: 112px;
+    --container-width: 1400px;
+
+    --font-main: 'Montserrat', sans-serif;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: var(--header-height);
+
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom: 1px solid rgba(23, 59, 112, 0.08);
+
+    transition:
+        height 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.site-header.scrolled {
+    height: 88px;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    box-shadow: 0 5px 25px rgba(13, 35, 71, 0.08);
+}
+
+/* =========================================================
+   HEADER CONTAINER
+========================================================= */
+
+.header-container {
+    width: min(92%, var(--container-width));
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.header-logo {
+    position: relative;
+    z-index: 1002;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    width: clamp(185px, 19vw, 270px);
+}
+
+.header-logo img {
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover img {
+    transform: scale(1.025);
+}
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: clamp(18px, 2.4vw, 42px);
+}
+
+.nav-link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 0;
+
+    color: var(--primary);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+
+    transition: color 0.3s ease;
+}
+
+/* =========================================================
+   NAVIGATION UNDERLINE
+========================================================= */
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+
+    width: 0;
+    height: 3px;
+
+    background: var(--secondary);
+
+    border-radius: 5px;
+
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--secondary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* =========================================================
+   HAMBURGER BUTTON
+========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    position: relative;
+    z-index: 1002;
+
+    width: 46px;
+    height: 46px;
+
+    padding: 8px;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    position: absolute;
+    left: 8px;
+
+    display: block;
+
+    width: 30px;
+    height: 3px;
+
+    background: var(--primary);
+    border-radius: 4px;
+
+    transition:
+        top 0.35s ease,
+        transform 0.35s ease,
+        opacity 0.25s ease,
+        background 0.3s ease;
+}
+
+/* Hamburger lines */
+
+.menu-toggle span:nth-child(1) {
+    top: 12px;
+}
+
+.menu-toggle span:nth-child(2) {
+    top: 22px;
+}
+
+.menu-toggle span:nth-child(3) {
+    top: 32px;
+}
+
+/* =========================================================
+   HAMBURGER ACTIVE ANIMATION
+========================================================= */
+
+.menu-toggle.active span:nth-child(1) {
+    top: 22px;
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(12px);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    top: 22px;
+    transform: rotate(-45deg);
+}
+
+.menu-toggle.active span {
+    background: var(--secondary);
+}
+
+/* =========================================================
+   MOBILE MENU BASE
+========================================================= */
+
+.mobile-menu {
+    display: none;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    gap: 8px;
+}
+
+.mobile-nav-link {
+    width: min(85%, 400px);
+
+    padding: 15px 18px;
+
+    text-align: center;
+
+    color: var(--primary);
+
+    font-size: 17px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border-radius: 6px;
+
+    opacity: 0;
+    transform: translateY(-12px);
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+/* Link effects */
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    color: var(--secondary);
+
+    background: rgba(23, 59, 112, 0.04);
+}
+
+/* Opened links */
+
+.mobile-menu.open .mobile-nav-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered entry */
+
+.mobile-menu.open .mobile-nav-link:nth-child(1) {
+    transition-delay: 0.08s;
+}
+
+.mobile-menu.open .mobile-nav-link:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.mobile-menu.open .mobile-nav-link:nth-child(3) {
+    transition-delay: 0.16s;
+}
+
+.mobile-menu.open .mobile-nav-link:nth-child(4) {
+    transition-delay: 0.20s;
+}
+
+.mobile-menu.open .mobile-nav-link:nth-child(5) {
+    transition-delay: 0.24s;
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+main {
+    min-height: 100vh;
+
+    padding-top: var(--header-height);
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOPS
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .header-container {
+        gap: 22px;
+    }
+
+    .header-logo {
+        width: 205px;
+    }
+
+    .desktop-nav {
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLETS
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    :root {
+        --header-height: 90px;
+    }
+
+    .site-header.scrolled {
+        height: 76px;
+    }
+
+    .header-container {
+        width: 92%;
+    }
+
+    .header-logo {
+        width: clamp(170px, 27vw, 235px);
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* =========================================
+       MOBILE MENU - TOP TO MIDDLE
+    ========================================= */
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        z-index: 999;
+
+        display: block;
+
+        width: 100%;
+
+        height: min(65dvh, 570px);
+        min-height: min(470px, 100dvh);
+
+        padding-top: var(--header-height);
+        padding-bottom: 20px;
+
+        background: rgba(255, 255, 255, 0.99);
+
+        border-bottom: 3px solid var(--secondary);
+
+        box-shadow: 0 15px 30px rgba(13, 35, 71, 0.10);
+
+        transform: translateY(-105%);
+
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0.45s ease;
+    }
+
+    .mobile-menu.open {
+        transform: translateY(0);
+
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .mobile-nav {
+        overflow-y: auto;
+    }
+
+    .site-header.menu-active {
+        background: var(--white);
+        box-shadow: none;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    :root {
+        --header-height: 78px;
+    }
+
+    .site-header.scrolled {
+        height: 70px;
+    }
+
+    .header-container {
+        width: 92%;
+        gap: 15px;
+    }
+
+    .header-logo {
+        width: clamp(160px, 51vw, 210px);
+    }
+
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+
+        flex-shrink: 0;
+    }
+
+    .mobile-menu {
+        height: min(65dvh, 510px);
+        min-height: min(450px, 100dvh);
+    }
+
+    .mobile-nav {
+        gap: 4px;
+    }
+
+    .mobile-nav-link {
+        font-size: 15px;
+        padding: 14px 12px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .header-logo {
+        width: 155px;
+    }
+
+    .mobile-nav-link {
+        font-size: 14px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SHORT SCREENS
+========================================================= */
+
+@media (max-height: 550px) and (max-width: 1024px) {
+
+    .mobile-menu {
+        height: 100dvh;
+        min-height: 0;
+
+        overflow-y: auto;
+    }
+
+    .mobile-nav {
+        justify-content: flex-start;
+    }
+
+    .mobile-nav-link {
+        padding: 9px 12px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   FOOTER - IMPACTA CONSULTING
+========================================================= */
+
+.site-footer {
+    width: 100%;
+    background: #ffffff;
+    color: #173b70;
+
+    border-top: 1px solid #e8edf3;
+}
+
+/* =========================================================
+   FOOTER CONTAINER
+========================================================= */
+
+.footer-container {
+    width: min(92%, var(--container-width));
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+
+    align-items: start;
+    column-gap: 60px;
+
+    padding: 80px 0 75px;
+}
+
+/* =========================================================
+   FOOTER LOGO
+========================================================= */
+
+.footer-logo-column {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.footer-logo {
+    display: inline-block;
+
+    width: clamp(185px, 19vw, 270px);
+    flex-shrink: 0;
+}
+
+.footer-logo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover img {
+    transform: scale(1.025);
+}
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 15px;
+    min-width: 0;
+}
+
+/* =========================================================
+   FOOTER TITLES
+========================================================= */
+
+.footer-title {
+    position: relative;
+
+    margin-bottom: 14px;
+    padding-bottom: 16px;
+
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    color: #173b70;
+}
+
+.footer-title::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 42px;
+    height: 3px;
+
+    background: #e51b2b;
+    border-radius: 3px;
+}
+
+/* =========================================================
+   FOOTER CONTENT
+========================================================= */
+
+.footer-column p,
+.footer-column a {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.9;
+
+    color: #53647a;
+
+    overflow-wrap: anywhere;
+}
+
+.footer-column a {
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #e51b2b;
+    transform: translateX(4px);
+}
+
+/* =========================================================
+   RESPONSIVE - TABLETS
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .footer-container {
+        grid-template-columns: 1.1fr 1fr 1fr;
+        column-gap: 28px;
+
+        padding: 65px 0 60px;
+    }
+
+    .footer-logo {
+        width: clamp(170px, 27vw, 235px);
+    }
+
+    .footer-title {
+        font-size: 14px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        row-gap: 38px;
+
+        padding: 55px 0 50px;
+    }
+
+    .footer-logo-column {
+        justify-content: flex-start;
+    }
+
+    .footer-logo {
+        width: clamp(160px, 51vw, 210px);
+    }
+
+    .footer-column {
+        gap: 10px;
+    }
+
+    .footer-title {
+        margin-bottom: 10px;
+        padding-bottom: 13px;
+
+        font-size: 15px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+        font-size: 14px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .footer-logo {
+        width: 155px;
+    }
+
+    .footer-container {
+        row-gap: 32px;
+    }
+}
+
+
+/* =========================================================
+   CONTACT PAGE - CAREERS HERO
+========================================================= */
+
+.careers-hero {
+    width: 100%;
+    min-height: 290px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 65px 20px;
+
+    background: linear-gradient(110deg,
+            #173b70 0%,
+            #102d58 50%,
+            #0d2347 100%);
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.careers-hero-container {
+    width: min(92%, 1200px);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.careers-hero-title {
+    margin-bottom: 17px;
+
+    color: #ffffff;
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.careers-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 17px;
+
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.careers-breadcrumb a {
+    color: #c4d5e9;
+    transition: color 0.3s ease;
+}
+
+.careers-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.careers-breadcrumb-separator {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 20px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .careers-hero {
+        min-height: 250px;
+        padding: 55px 20px;
+    }
+
+    .careers-hero-title {
+        font-size: clamp(36px, 5vw, 48px);
+    }
+
+    .careers-breadcrumb {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .careers-hero {
+        min-height: 210px;
+        padding: 45px 16px;
+    }
+
+    .careers-hero-title {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    .careers-breadcrumb {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .careers-breadcrumb-separator {
+        font-size: 17px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .careers-hero {
+        min-height: 190px;
+        padding: 40px 15px;
+    }
+
+    .careers-hero-title {
+        font-size: 31px;
+    }
+
+    .careers-breadcrumb {
+        font-size: 12px;
+    }
+}
+
+
+
+/* =========================================================
+   CAREERS - RECRUITMENT PROCESS
+========================================================= */
+
+.recruitment-section {
+    width: 100%;
+    background: #ffffff;
+
+    padding: 65px 0 85px;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.recruitment-container {
+    width: min(90%, 1100px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.recruitment-subtitle {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #9b9b9b;
+
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.recruitment-title {
+    margin: 0 0 30px;
+
+    color: #252525;
+
+    font-size: clamp(34px, 3.3vw, 45px);
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.recruitment-description {
+    width: 100%;
+}
+
+.recruitment-description p {
+    margin: 0 0 20px;
+
+    color: #777777;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.95;
+    letter-spacing: 0.05px;
+
+    text-align: left;
+}
+
+/* =========================================================
+   RECRUITMENT STAGES
+========================================================= */
+
+.recruitment-stages {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.recruitment-stages p {
+    margin-bottom: 12px;
+}
+
+.recruitment-stages strong {
+    color: #666666;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .recruitment-container {
+        width: 88%;
+        max-width: 1000px;
+    }
+
+    .recruitment-section {
+        padding: 60px 0 75px;
+    }
+
+    .recruitment-description p {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .recruitment-section {
+        padding: 55px 0 65px;
+    }
+
+    .recruitment-container {
+        width: 90%;
+    }
+
+    .recruitment-subtitle {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .recruitment-title {
+        font-size: 36px;
+        margin-bottom: 25px;
+    }
+
+    .recruitment-description p {
+        font-size: 15px;
+        line-height: 1.85;
+        margin-bottom: 18px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .recruitment-section {
+        padding: 45px 0 55px;
+    }
+
+    .recruitment-container {
+        width: 90%;
+    }
+
+    .recruitment-subtitle {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .recruitment-title {
+        font-size: 30px;
+        margin-bottom: 22px;
+        letter-spacing: -0.4px;
+    }
+
+    .recruitment-description p {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.85;
+        margin-bottom: 17px;
+    }
+
+    .recruitment-stages {
+        gap: 4px;
+    }
+
+    .recruitment-stages p {
+        margin-bottom: 12px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .recruitment-subtitle {
+        font-size: 17px;
+    }
+
+    .recruitment-title {
+        font-size: 27px;
+    }
+
+    .recruitment-description p {
+        font-size: 13.5px;
+    }
+}
+
+
+
+
+/* =========================================================
+   CAREERS - WHAT WE ARE LOOKING FOR
+========================================================= */
+
+.careers-requirements-section {
+    width: 100%;
+    background: #f8f8f8;
+
+    padding: 75px 0 85px;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.careers-requirements-container {
+    width: min(90%, 1100px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.careers-requirements-title {
+    margin: 0 0 26px;
+
+    color: #252525;
+
+    font-size: clamp(32px, 3vw, 42px);
+    font-weight: 700;
+
+    line-height: 1.25;
+    letter-spacing: -0.6px;
+}
+
+/* =========================================================
+   BLUE UNDERLINE
+========================================================= */
+
+.careers-requirements-line {
+    width: 112px;
+    height: 5px;
+
+    margin-bottom: 28px;
+
+    background: #173b70;
+    border-radius: 4px;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.careers-requirements-description {
+    max-width: 100%;
+
+    margin: 0 0 20px;
+
+    color: #777777;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.95;
+    letter-spacing: 0.05px;
+}
+
+/* =========================================================
+   REQUIREMENTS LIST
+========================================================= */
+
+.careers-requirements-list {
+    margin: 0;
+    padding-left: 22px;
+
+    color: #777777;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.95;
+}
+
+.careers-requirements-list li {
+    padding-left: 2px;
+    margin-bottom: 9px;
+}
+
+.careers-requirements-list li::marker {
+    color: #777777;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .careers-requirements-section {
+        padding: 65px 0 75px;
+    }
+
+    .careers-requirements-container {
+        width: 88%;
+        max-width: 1000px;
+    }
+
+    .careers-requirements-description,
+    .careers-requirements-list {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .careers-requirements-section {
+        padding: 55px 0 65px;
+    }
+
+    .careers-requirements-container {
+        width: 90%;
+    }
+
+    .careers-requirements-title {
+        font-size: 34px;
+        margin-bottom: 22px;
+    }
+
+    .careers-requirements-line {
+        width: 95px;
+        height: 4px;
+        margin-bottom: 25px;
+    }
+
+    .careers-requirements-description,
+    .careers-requirements-list {
+        font-size: 15px;
+        line-height: 1.85;
+    }
+
+    .careers-requirements-list {
+        padding-left: 20px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .careers-requirements-section {
+        padding: 45px 0 55px;
+    }
+
+    .careers-requirements-container {
+        width: 90%;
+    }
+
+    .careers-requirements-title {
+        font-size: 29px;
+        line-height: 1.3;
+        margin-bottom: 20px;
+    }
+
+    .careers-requirements-line {
+        width: 85px;
+        height: 4px;
+        margin-bottom: 22px;
+    }
+
+    .careers-requirements-description,
+    .careers-requirements-list {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    .careers-requirements-description {
+        margin-bottom: 18px;
+    }
+
+    .careers-requirements-list {
+        padding-left: 19px;
+    }
+
+    .careers-requirements-list li {
+        margin-bottom: 12px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .careers-requirements-title {
+        font-size: 26px;
+    }
+
+    .careers-requirements-description,
+    .careers-requirements-list {
+        font-size: 13.5px;
+    }
+}
+
+
+/* =========================================================
+   CONTACT US HERO SECTION
+========================================================= */
+
+.careers-contact-hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 290px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 65px 20px;
+
+    background: linear-gradient(110deg,
+            #173b70 0%,
+            #102d58 50%,
+            #0d2347 100%);
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.careers-contact-container {
+    width: min(92%, 1200px);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.careers-contact-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .careers-contact-hero {
+        min-height: 250px;
+        padding: 55px 20px;
+    }
+
+    .careers-contact-title {
+        font-size: clamp(36px, 5vw, 48px);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .careers-contact-hero {
+        min-height: 210px;
+        padding: 45px 16px;
+    }
+
+    .careers-contact-title {
+        font-size: 36px;
+        letter-spacing: -0.5px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .careers-contact-hero {
+        min-height: 190px;
+        padding: 40px 15px;
+    }
+
+    .careers-contact-title {
+        font-size: 31px;
+    }
+}
+
+
+
+/* =========================================================
+   CAREERS - DEVELOPMENT & OPPORTUNITIES
+========================================================= */
+
+.careers-info-section {
+    width: 100%;
+    background: #ffffff;
+
+    padding: 75px 0 85px;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.careers-info-container {
+    width: min(90%, 1100px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.careers-info-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* =========================================================
+   PARAGRAPHS
+========================================================= */
+
+.careers-info-content p {
+    margin: 0;
+
+    color: #777777;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.95;
+    letter-spacing: 0.05px;
+
+    text-align: left;
+}
+
+/* =========================================================
+   CONTACT EMAIL
+========================================================= */
+
+.careers-info-contact a {
+    color: #173b70;
+    font-weight: 600;
+
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    transition: color 0.3s ease;
+}
+
+.careers-info-contact a:hover {
+    color: #e51b2b;
+    text-decoration: underline;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .careers-info-section {
+        padding: 65px 0 75px;
+    }
+
+    .careers-info-container {
+        width: 88%;
+        max-width: 1000px;
+    }
+
+    .careers-info-content p {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .careers-info-section {
+        padding: 55px 0 65px;
+    }
+
+    .careers-info-container {
+        width: 90%;
+    }
+
+    .careers-info-content {
+        gap: 20px;
+    }
+
+    .careers-info-content p {
+        font-size: 15px;
+        line-height: 1.85;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .careers-info-section {
+        padding: 45px 0 55px;
+    }
+
+    .careers-info-container {
+        width: 90%;
+    }
+
+    .careers-info-content {
+        gap: 18px;
+    }
+
+    .careers-info-content p {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .careers-info-content p {
+        font-size: 13.5px;
+    }
+}
+
+
+
+
+/* =========================================================
+   IMPACTA CONSULTING - CONTACT FORM SECTION
+========================================================= */
+
+.impacta-form-section {
+    width: 100%;
+    padding: 90px 0 100px;
+    background: #f7f9fc;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.impacta-form-container {
+    width: min(90%, 1050px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.impacta-form-heading {
+    max-width: 750px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.impacta-form-subtitle {
+    display: block;
+    margin-bottom: 13px;
+
+    color: #e51b2b;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.impacta-form-title {
+    margin: 0 0 18px;
+
+    color: #173b70;
+    font-size: clamp(32px, 3.5vw, 45px);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.impacta-form-description {
+    color: #777777;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+
+.impacta-contact-form {
+    width: 100%;
+    padding: 48px;
+
+    background: #ffffff;
+    border: 1px solid #e9edf3;
+    border-radius: 10px;
+
+    box-shadow: 0 12px 40px rgba(23, 59, 112, 0.05);
+}
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.impacta-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 25px;
+}
+
+/* =========================================================
+   FORM GROUPS
+========================================================= */
+
+.impacta-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.impacta-form-full {
+    grid-column: 1 / -1;
+}
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.impacta-form-group label {
+    color: #173b70;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.impacta-form-group label span {
+    color: #e51b2b;
+}
+
+/* =========================================================
+   INPUTS & TEXTAREA
+========================================================= */
+
+.impacta-form-group input,
+.impacta-form-group textarea {
+    width: 100%;
+    padding: 16px 18px;
+
+    background: #ffffff;
+    color: #27364c;
+
+    border: 1px solid #dce3ec;
+    border-radius: 5px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.impacta-form-group input {
+    height: 55px;
+}
+
+.impacta-form-group textarea {
+    min-height: 165px;
+    resize: vertical;
+    line-height: 1.8;
+}
+
+/* =========================================================
+   PLACEHOLDERS
+========================================================= */
+
+.impacta-form-group input::placeholder,
+.impacta-form-group textarea::placeholder {
+    color: #9ca8b7;
+    font-weight: 400;
+}
+
+/* =========================================================
+   FOCUS EFFECT
+========================================================= */
+
+.impacta-form-group input:focus,
+.impacta-form-group textarea:focus {
+    border-color: #173b70;
+
+    box-shadow: 0 0 0 3px rgba(23, 59, 112, 0.09);
+}
+
+/* =========================================================
+   INVALID INPUT
+========================================================= */
+
+.impacta-form-group input:user-invalid,
+.impacta-form-group textarea:user-invalid {
+    border-color: #e51b2b;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.impacta-form-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 35px;
+}
+
+.impacta-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    min-height: 53px;
+    padding: 16px 30px;
+
+    background: #173b70;
+    color: #ffffff;
+
+    border: 2px solid #173b70;
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.impacta-submit-btn:hover {
+    background: #e51b2b;
+    border-color: #e51b2b;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(229, 27, 43, 0.15);
+}
+
+.impacta-submit-btn:focus-visible {
+    outline: 3px solid #e51b2b;
+    outline-offset: 4px;
+}
+
+.impacta-submit-btn span:last-child {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.impacta-form-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    margin-top: 30px;
+    padding: 20px 22px;
+
+    background: #f0faf4;
+
+    border: 1px solid #b9e6c8;
+    border-left: 4px solid #269657;
+    border-radius: 5px;
+}
+
+.impacta-form-success[hidden] {
+    display: none;
+}
+
+.impacta-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+
+    background: #269657;
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.impacta-form-success strong {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #176b3b;
+    font-size: 15px;
+}
+
+.impacta-form-success p {
+    margin: 0;
+
+    color: #397453;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .impacta-form-section {
+        padding: 75px 0 85px;
+    }
+
+    .impacta-form-container {
+        width: 90%;
+    }
+
+    .impacta-contact-form {
+        padding: 35px;
+    }
+
+    .impacta-form-grid {
+        gap: 24px 20px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .impacta-form-section {
+        padding: 55px 0 65px;
+    }
+
+    .impacta-form-container {
+        width: 90%;
+    }
+
+    .impacta-form-heading {
+        margin-bottom: 32px;
+    }
+
+    .impacta-form-subtitle {
+        font-size: 12px;
+    }
+
+    .impacta-form-title {
+        font-size: 31px;
+    }
+
+    .impacta-form-description {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .impacta-contact-form {
+        padding: 25px 20px;
+    }
+
+    .impacta-form-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .impacta-form-full {
+        grid-column: auto;
+    }
+
+    .impacta-form-group label {
+        font-size: 13px;
+    }
+
+    .impacta-form-group input {
+        height: 52px;
+    }
+
+    .impacta-form-group input,
+    .impacta-form-group textarea {
+        padding: 14px 15px;
+        font-size: 14px;
+    }
+
+    .impacta-form-actions {
+        margin-top: 28px;
+    }
+
+    .impacta-submit-btn {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .impacta-form-success {
+        padding: 17px 15px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .impacta-form-title {
+        font-size: 28px;
+    }
+
+    .impacta-contact-form {
+        padding: 22px 15px;
+    }
+}
+
+
+/* =========================================================
+   HOME - HERO SECTION
+========================================================= */
+
+.home-hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 650px;
+    height: calc(100svh - var(--header-height));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../img/home-hero.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+.home-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(8, 20, 40, 0.35);
+
+    z-index: 1;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.home-hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(90%, 1200px);
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.home-hero-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 700;
+
+    line-height: 1.12;
+    letter-spacing: -1px;
+
+    text-transform: uppercase;
+
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .home-hero {
+        min-height: 560px;
+    }
+
+    .home-hero-content {
+        width: 90%;
+    }
+
+    .home-hero-title {
+        font-size: clamp(34px, 4.5vw, 52px);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .home-hero {
+        min-height: 500px;
+        height: 75svh;
+
+        background-position: center center;
+    }
+
+    .home-hero-content {
+        width: 90%;
+    }
+
+    .home-hero-title {
+        font-size: clamp(30px, 5vw, 42px);
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+    }
+
+    .home-hero-title br {
+        display: none;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .home-hero {
+        min-height: 460px;
+        height: 70svh;
+
+        background-position: center center;
+    }
+
+    .home-hero-overlay {
+        background: rgba(8, 20, 40, 0.45);
+    }
+
+    .home-hero-content {
+        width: 92%;
+    }
+
+    .home-hero-title {
+        font-size: clamp(27px, 7vw, 35px);
+        line-height: 1.25;
+        letter-spacing: -0.3px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .home-hero {
+        min-height: 420px;
+    }
+
+    .home-hero-title {
+        font-size: 25px;
+    }
+}
+
+
+
+/* =========================================================
+   HOME - ABOUT / MISSION & COMPETITIVE ADVANTAGE
+========================================================= */
+
+.home-about-section {
+    width: 100%;
+    padding: 100px 0 110px;
+    background: #ffffff;
+}
+
+/* =========================================================
+   CONTAINER - TWO COLUMNS
+========================================================= */
+
+.home-about-container {
+    width: min(92%, 1350px);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 75px;
+    align-items: start;
+}
+
+/* =========================================================
+   EACH ITEM
+========================================================= */
+
+.home-about-item {
+    display: grid;
+    grid-template-columns: 65px minmax(0, 1fr);
+    gap: 22px;
+
+    align-items: start;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.home-about-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    color: #173b70;
+}
+
+.home-about-icon svg {
+    width: 54px;
+    height: 54px;
+
+    stroke: #173b70;
+    stroke-width: 1.5;
+
+    fill: none;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.home-about-content {
+    width: 100%;
+    min-width: 0;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.home-about-title {
+    margin: 0 0 20px;
+
+    color: #252525;
+
+    font-size: clamp(23px, 2vw, 29px);
+    font-weight: 700;
+
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.home-about-description {
+    margin: 0;
+
+    color: #777777;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1.95;
+    text-align: justify;
+}
+
+/* =========================================================
+   COMPETITIVE ADVANTAGE LIST
+========================================================= */
+
+.home-about-list {
+    margin: 0;
+    padding-left: 20px;
+
+    color: #777777;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1.95;
+}
+
+.home-about-list li {
+    margin-bottom: 12px;
+    padding-left: 2px;
+}
+
+.home-about-list li:last-child {
+    margin-bottom: 0;
+}
+
+.home-about-list li::marker {
+    color: #777777;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .home-about-section {
+        padding: 85px 0 95px;
+    }
+
+    .home-about-container {
+        width: 92%;
+        gap: 40px;
+    }
+
+    .home-about-item {
+        grid-template-columns: 55px minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .home-about-icon,
+    .home-about-icon svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .home-about-description,
+    .home-about-list {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .home-about-section {
+        padding: 75px 0 85px;
+    }
+
+    .home-about-container {
+        width: min(90%, 720px);
+
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .home-about-item {
+        grid-template-columns: 60px minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .home-about-icon,
+    .home-about-icon svg {
+        width: 52px;
+        height: 52px;
+    }
+
+    .home-about-title {
+        font-size: 27px;
+    }
+
+    .home-about-description,
+    .home-about-list {
+        font-size: 16px;
+        line-height: 1.9;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .home-about-section {
+        padding: 55px 0 65px;
+    }
+
+    .home-about-container {
+        width: 90%;
+        gap: 45px;
+    }
+
+    .home-about-item {
+        grid-template-columns: 45px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .home-about-icon,
+    .home-about-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .home-about-title {
+        font-size: 23px;
+        margin-bottom: 16px;
+    }
+
+    .home-about-description,
+    .home-about-list {
+        font-size: 14px;
+        line-height: 1.85;
+        text-align: left;
+    }
+
+    .home-about-list {
+        padding-left: 18px;
+    }
+
+    .home-about-list li {
+        margin-bottom: 10px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .home-about-item {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .home-about-icon,
+    .home-about-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    .home-about-title {
+        font-size: 21px;
+    }
+
+    .home-about-description,
+    .home-about-list {
+        font-size: 13.5px;
+    }
+}
+
+
+
+/* =========================================================
+   HOME - OUR COMMITMENT SECTION
+========================================================= */
+
+.home-commitment-section {
+    position: relative;
+
+    width: 100%;
+    min-height: 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 90px 25px;
+
+    background-image: url("../img/commitment-bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   BLUE OVERLAY
+========================================================= */
+
+.home-commitment-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(13, 58, 105, 0.88);
+
+    z-index: 1;
+}
+
+/* =========================================================
+   CONTENT CONTAINER
+========================================================= */
+
+.home-commitment-container {
+    position: relative;
+    z-index: 2;
+
+    width: min(94%, 1350px);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* =========================================================
+   SMALL SUBTITLE
+========================================================= */
+
+.home-commitment-subtitle {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.home-commitment-title {
+    max-width: 1320px;
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 700;
+
+    line-height: 1.3;
+    letter-spacing: -0.6px;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .home-commitment-section {
+        min-height: 370px;
+        padding: 80px 25px;
+    }
+
+    .home-commitment-container {
+        width: 92%;
+    }
+
+    .home-commitment-title {
+        font-size: 33px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .home-commitment-section {
+        min-height: 350px;
+        padding: 75px 20px;
+    }
+
+    .home-commitment-container {
+        width: 94%;
+    }
+
+    .home-commitment-subtitle {
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .home-commitment-title {
+        font-size: clamp(25px, 4.2vw, 32px);
+        line-height: 1.4;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .home-commitment-section {
+        min-height: 330px;
+        padding: 65px 18px;
+    }
+
+    .home-commitment-container {
+        width: 100%;
+    }
+
+    .home-commitment-subtitle {
+        font-size: 11px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+    }
+
+    .home-commitment-title {
+        font-size: 23px;
+        line-height: 1.45;
+        letter-spacing: -0.3px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .home-commitment-section {
+        padding: 55px 15px;
+    }
+
+    .home-commitment-title {
+        font-size: 21px;
+    }
+
+    .home-commitment-subtitle {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   HOME - GROWTH & IMPACT SECTION
+========================================================= */
+
+.home-growth-section {
+    position: relative;
+    width: 100%;
+
+    padding: 100px 0 105px;
+
+    background-color: #fafafa;
+    background-image: url("../img/globe-pattern.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 105%;
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.home-growth-container {
+    position: relative;
+    z-index: 2;
+
+    width: min(90%, 1200px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.home-growth-heading {
+    margin-bottom: 65px;
+}
+
+.home-growth-subtitle {
+    display: block;
+    margin-bottom: 16px;
+
+    color: #999999;
+
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.home-growth-title {
+    margin: 0;
+
+    color: #202020;
+
+    font-size: clamp(34px, 3.5vw, 46px);
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+}
+
+/* =========================================================
+   STATISTICS GRID
+========================================================= */
+
+.home-growth-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* =========================================================
+   STAT ITEM
+========================================================= */
+
+.home-growth-stat {
+    padding: 0 0 25px;
+
+    border-bottom: 1px solid #e7e7e7;
+}
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.home-growth-number {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+
+    margin-bottom: 6px;
+
+    color: #07508c;
+
+    font-size: clamp(52px, 5vw, 72px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -2px;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.home-growth-plus {
+    font-size: 0.65em;
+    font-weight: 400;
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.home-growth-label {
+    margin: 0;
+
+    color: #202020;
+
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.home-growth-action {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.home-growth-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 56px;
+    padding: 16px 28px;
+
+    background: #07508c;
+    color: #ffffff;
+
+    border: 2px solid #07508c;
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.home-growth-button:hover {
+    background: #e51b2b;
+    border-color: #e51b2b;
+    color: #ffffff;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(229, 27, 43, 0.16);
+}
+
+.home-growth-button span {
+    font-size: 20px;
+    line-height: 1;
+
+    transition: transform 0.3s ease;
+}
+
+.home-growth-button:hover span {
+    transform: translateX(5px);
+}
+
+/* =========================================================
+   SCROLL REVEAL ANIMATION
+========================================================= */
+
+.growth-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.growth-reveal.growth-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-growth-stat:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.home-growth-stat:nth-child(3) {
+    transition-delay: 0.24s;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .home-growth-section {
+        padding: 85px 0 90px;
+    }
+
+    .home-growth-container {
+        width: 90%;
+    }
+
+    .home-growth-title {
+        font-size: 40px;
+    }
+
+    .home-growth-number {
+        font-size: 60px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .home-growth-section {
+        padding: 70px 0 80px;
+        background-size: auto 80%;
+    }
+
+    .home-growth-heading {
+        margin-bottom: 50px;
+    }
+
+    .home-growth-subtitle {
+        font-size: 19px;
+    }
+
+    .home-growth-title {
+        font-size: 34px;
+    }
+
+    .home-growth-title br {
+        display: none;
+    }
+
+    .home-growth-stats {
+        gap: 18px;
+    }
+
+    .home-growth-number {
+        font-size: 48px;
+        gap: 7px;
+    }
+
+    .home-growth-label {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .home-growth-section {
+        padding: 60px 0 70px;
+
+        background-size: auto 65%;
+        background-position: right top;
+    }
+
+    .home-growth-container {
+        width: 88%;
+    }
+
+    .home-growth-heading {
+        margin-bottom: 40px;
+    }
+
+    .home-growth-subtitle {
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+
+    .home-growth-title {
+        font-size: 29px;
+        line-height: 1.3;
+    }
+
+    .home-growth-stats {
+        grid-template-columns: 1fr;
+        gap: 25px;
+
+        margin-bottom: 35px;
+    }
+
+    .home-growth-stat {
+        padding-bottom: 20px;
+    }
+
+    .home-growth-number {
+        font-size: 55px;
+    }
+
+    .home-growth-label {
+        font-size: 17px;
+    }
+
+    .home-growth-button {
+        min-height: 52px;
+        padding: 14px 25px;
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .home-growth-title {
+        font-size: 26px;
+    }
+
+    .home-growth-number {
+        font-size: 50px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .growth-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .home-growth-button,
+    .home-growth-button span {
+        transition: none;
+    }
+}
+
+
+
+/* =========================================================
+   HOME - CLIENT FEEDBACK SECTION
+========================================================= */
+
+.home-feedback-section {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 65px 0 45px;
+
+    background-image: url("../img/feedback-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   BACKGROUND OVERLAY
+========================================================= */
+
+.home-feedback-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(21, 76, 120, 0.12);
+    backdrop-filter: blur(2px);
+
+    z-index: 1;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.home-feedback-container {
+    position: relative;
+    z-index: 2;
+
+    width: min(96%, 1100px);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 65px minmax(0, 1fr) 65px;
+
+    align-items: center;
+    gap: 25px;
+}
+
+/* =========================================================
+   TESTIMONIAL CARD
+========================================================= */
+
+.home-feedback-card {
+    width: 100%;
+    min-height: 330px;
+
+    padding: 42px 55px 50px;
+
+    background: #ffffff;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================================
+   QUOTATION ICON
+========================================================= */
+
+.home-feedback-quote-icon {
+    height: 60px;
+
+    color: #999999;
+
+    font-family: Georgia, serif;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+
+    user-select: none;
+}
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.home-feedback-slides {
+    position: relative;
+    width: 100%;
+    min-height: 165px;
+}
+
+.home-feedback-slide {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: flex-start;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+
+    transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        visibility 0.55s ease;
+}
+
+.home-feedback-slide.active {
+    position: relative;
+
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.home-feedback-slide p {
+    margin: 0;
+
+    color: #282828;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    line-height: 1.75;
+    letter-spacing: -0.1px;
+}
+
+/* =========================================================
+   LEFT & RIGHT ARROWS
+========================================================= */
+
+.home-feedback-arrow {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.85);
+    color: #505050;
+
+    border: none;
+    border-radius: 50%;
+
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.home-feedback-arrow:hover {
+    background: #ffffff;
+    color: #173b70;
+    transform: scale(1.08);
+}
+
+.home-feedback-arrow:focus-visible,
+.home-feedback-dot:focus-visible {
+    outline: 3px solid #e51b2b;
+    outline-offset: 4px;
+}
+
+/* =========================================================
+   SLIDE DOTS
+========================================================= */
+
+.home-feedback-dots {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.home-feedback-dot {
+    width: 9px;
+    height: 9px;
+
+    padding: 0;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+.home-feedback-dot.active {
+    width: 27px;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .home-feedback-container {
+        width: 96%;
+        gap: 18px;
+    }
+
+    .home-feedback-card {
+        padding: 40px 45px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .home-feedback-section {
+        min-height: 430px;
+        padding: 55px 0 40px;
+    }
+
+    .home-feedback-container {
+        width: 96%;
+        grid-template-columns: 48px minmax(0, 1fr) 48px;
+        gap: 12px;
+    }
+
+    .home-feedback-card {
+        min-height: 300px;
+        padding: 35px 30px;
+    }
+
+    .home-feedback-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 23px;
+    }
+
+    .home-feedback-quote-icon {
+        font-size: 85px;
+        height: 55px;
+    }
+
+    .home-feedback-slide p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .home-feedback-section {
+        min-height: 420px;
+        padding: 45px 0 35px;
+    }
+
+    .home-feedback-container {
+        width: 94%;
+
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .home-feedback-card {
+        grid-column: 1 / -1;
+        grid-row: 1;
+
+        min-height: 300px;
+        padding: 30px 25px;
+    }
+
+    .home-feedback-prev {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: end;
+    }
+
+    .home-feedback-next {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: start;
+    }
+
+    .home-feedback-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+    }
+
+    .home-feedback-quote-icon {
+        font-size: 75px;
+        height: 48px;
+    }
+
+    .home-feedback-slides {
+        min-height: 180px;
+    }
+
+    .home-feedback-slide p {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    .home-feedback-dots {
+        margin-top: 18px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .home-feedback-card {
+        padding: 25px 20px;
+        min-height: 320px;
+    }
+
+    .home-feedback-slide p {
+        font-size: 13.5px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-feedback-slide,
+    .home-feedback-arrow,
+    .home-feedback-dot {
+        transition: none;
+    }
+}
+
+
+/* =========================================================
+   SERVICES - HERO SECTION
+========================================================= */
+
+.services-hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 290px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 65px 20px;
+
+    background: linear-gradient(110deg,
+            #173b70 0%,
+            #102d58 50%,
+            #0d2347 100%);
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.services-hero-container {
+    width: min(92%, 1200px);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.services-hero-title {
+    margin: 0 0 15px;
+
+    color: #ffffff;
+
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.services-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    color: #c1cbd9;
+
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.services-breadcrumb a {
+    color: #c1cbd9;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.services-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.services-breadcrumb-separator {
+    color: #899db9;
+    font-weight: 400;
+}
+
+.services-breadcrumb [aria-current="page"] {
+    color: #ffffff;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .services-hero {
+        min-height: 250px;
+        padding: 55px 20px;
+    }
+
+    .services-hero-title {
+        font-size: clamp(36px, 5vw, 48px);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .services-hero {
+        min-height: 210px;
+        padding: 45px 16px;
+    }
+
+    .services-hero-title {
+        font-size: 36px;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+    }
+
+    .services-breadcrumb {
+        font-size: 13px;
+        gap: 11px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .services-hero {
+        min-height: 190px;
+        padding: 40px 15px;
+    }
+
+    .services-hero-title {
+        font-size: 31px;
+    }
+
+    .services-breadcrumb {
+        font-size: 12px;
+    }
+}
+
+
+
+/* =========================================================
+   SERVICES - AREA OF EXPERTISE INTRO
+========================================================= */
+
+.services-expertise-intro {
+    width: 100%;
+    padding: 110px 20px 105px;
+    background: #ffffff;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.services-expertise-container {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.services-expertise-title {
+    margin: 0;
+
+    color: #252525;
+
+    font-size: clamp(34px, 3.5vw, 44px);
+    font-weight: 700;
+
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+}
+
+/* =========================================================
+   BLUE UNDERLINE
+========================================================= */
+
+.services-expertise-line {
+    width: 112px;
+    height: 5px;
+
+    margin: 25px auto 30px;
+
+    background: #173b70;
+    border-radius: 4px;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.services-expertise-description {
+    max-width: 950px;
+    margin: 0;
+
+    color: #808080;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.9;
+    letter-spacing: 0.05px;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .services-expertise-intro {
+        padding: 95px 25px 90px;
+    }
+
+    .services-expertise-title {
+        font-size: 40px;
+    }
+
+    .services-expertise-description {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .services-expertise-intro {
+        padding: 75px 20px 80px;
+    }
+
+    .services-expertise-title {
+        font-size: 35px;
+    }
+
+    .services-expertise-line {
+        width: 95px;
+        height: 4px;
+        margin: 22px auto 25px;
+    }
+
+    .services-expertise-description {
+        font-size: 15px;
+        line-height: 1.85;
+    }
+
+    .services-expertise-description br {
+        display: none;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .services-expertise-intro {
+        padding: 60px 18px 65px;
+    }
+
+    .services-expertise-title {
+        font-size: 30px;
+        letter-spacing: -0.5px;
+    }
+
+    .services-expertise-line {
+        width: 85px;
+        height: 4px;
+        margin: 20px auto 23px;
+    }
+
+    .services-expertise-description {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .services-expertise-title {
+        font-size: 27px;
+    }
+
+    .services-expertise-description {
+        font-size: 13.5px;
+    }
+}
+
+
+/* =========================================================
+   SERVICES - STRATEGY SETTING AND EXECUTION
+========================================================= */
+
+.services-strategy-section {
+    width: 100%;
+    padding: 35px 0 110px;
+    background: #ffffff;
+}
+
+.services-strategy-container {
+    width: min(92%, 1350px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.services-strategy-title {
+    margin: 0 0 35px;
+
+    color: #252525;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.6px;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.services-strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    align-items: start;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.services-strategy-card {
+    position: relative;
+    min-width: 0;
+
+    background: #ffffff;
+    border-radius: 7px;
+
+    transition: transform 0.35s ease;
+}
+
+.services-strategy-card:hover {
+    transform: translateY(-5px);
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.services-strategy-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.services-strategy-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.services-strategy-card:hover .services-strategy-image img {
+    transform: scale(1.05);
+}
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.services-strategy-card-body {
+    position: relative;
+    z-index: 2;
+
+    width: 88%;
+    margin: -28px auto 0;
+    padding: 35px 24px 30px;
+
+    background: #ffffff;
+    border-radius: 6px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.services-strategy-card-body h3 {
+    min-height: 65px;
+    margin: 0 0 20px;
+
+    color: #252525;
+
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   PLUS BUTTON
+========================================================= */
+
+.services-strategy-toggle {
+    position: relative;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto -62px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    z-index: 3;
+}
+
+.services-strategy-diamond {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #07508c;
+    border-radius: 10px;
+
+    transform: rotate(45deg);
+
+    transition:
+        background 0.3s ease,
+        transform 0.35s ease;
+}
+
+.services-strategy-symbol {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 1;
+
+    transform: rotate(-45deg);
+
+    transition: transform 0.35s ease;
+}
+
+.services-strategy-toggle:hover .services-strategy-diamond {
+    background: #e51b2b;
+}
+
+.services-strategy-toggle:focus-visible {
+    outline: 3px solid #e51b2b;
+    outline-offset: 5px;
+    border-radius: 10px;
+}
+
+/* =========================================================
+   EXPANDED BUTTON
+========================================================= */
+
+.services-strategy-card.is-open .services-strategy-diamond {
+    background: #e51b2b;
+}
+
+.services-strategy-card.is-open .services-strategy-symbol {
+    transform: rotate(0deg);
+}
+
+/* =========================================================
+   EXPANDABLE CONTENT
+========================================================= */
+
+.services-strategy-details {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        grid-template-rows 0.45s ease,
+        opacity 0.35s ease,
+        visibility 0.45s ease;
+}
+
+.services-strategy-details-inner {
+    min-height: 0;
+    overflow: hidden;
+
+    text-align: left;
+}
+
+.services-strategy-card.is-open .services-strategy-details {
+    grid-template-rows: 1fr;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+.services-strategy-card.is-open .services-strategy-details-inner {
+    padding-top: 75px;
+}
+
+/* =========================================================
+   EXPANDED DESCRIPTION
+========================================================= */
+
+.services-strategy-details p {
+    margin: 0 0 18px;
+
+    color: #777777;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.85;
+}
+
+/* =========================================================
+   EXPANDED LIST
+========================================================= */
+
+.services-strategy-details ul {
+    margin: 0;
+    padding-left: 19px;
+
+    color: #777777;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+.services-strategy-details li {
+    margin-bottom: 9px;
+}
+
+.services-strategy-details li::marker {
+    color: #07508c;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .services-strategy-grid {
+        gap: 22px;
+    }
+
+    .services-strategy-image {
+        height: 240px;
+    }
+
+    .services-strategy-card-body {
+        width: 90%;
+        padding: 30px 18px;
+    }
+
+    .services-strategy-card-body h3 {
+        font-size: 19px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .services-strategy-section {
+        padding: 25px 0 90px;
+    }
+
+    .services-strategy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 55px 25px;
+    }
+
+    .services-strategy-image {
+        height: 250px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .services-strategy-section {
+        padding: 20px 0 75px;
+    }
+
+    .services-strategy-container {
+        width: 90%;
+    }
+
+    .services-strategy-title {
+        font-size: 27px;
+        margin-bottom: 28px;
+    }
+
+    .services-strategy-grid {
+        grid-template-columns: 1fr;
+        gap: 65px;
+    }
+
+    .services-strategy-image {
+        height: 235px;
+    }
+
+    .services-strategy-card-body {
+        width: 90%;
+        padding: 28px 20px 30px;
+    }
+
+    .services-strategy-card-body h3 {
+        min-height: auto;
+        font-size: 20px;
+        margin-bottom: 22px;
+    }
+
+    .services-strategy-details p,
+    .services-strategy-details ul {
+        font-size: 13.5px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .services-strategy-title {
+        font-size: 24px;
+    }
+
+    .services-strategy-image {
+        height: 210px;
+    }
+
+    .services-strategy-card-body h3 {
+        font-size: 18px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .services-strategy-card,
+    .services-strategy-image img,
+    .services-strategy-diamond,
+    .services-strategy-symbol,
+    .services-strategy-details {
+        transition: none;
+    }
+}
+
+
+
+
+/* =========================================================
+   SERVICES - PERFORMANCE ENHANCEMENT
+========================================================= */
+
+.services-performance-section {
+    width: 100%;
+    padding: 35px 0 110px;
+    background: #ffffff;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.services-performance-container {
+    width: min(92%, 1350px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.services-performance-title {
+    margin: 0 0 35px;
+
+    color: #252525;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.6px;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.services-performance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 80px 32px;
+    align-items: start;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.services-performance-card {
+    position: relative;
+    min-width: 0;
+
+    background: #ffffff;
+    border-radius: 7px;
+
+    transition: transform 0.35s ease;
+}
+
+.services-performance-card:hover {
+    transform: translateY(-5px);
+}
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.services-performance-image {
+    width: 100%;
+    height: 280px;
+
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.services-performance-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.services-performance-card:hover .services-performance-image img {
+    transform: scale(1.05);
+}
+
+/* =========================================================
+   CARD BODY
+========================================================= */
+
+.services-performance-card-body {
+    position: relative;
+    z-index: 2;
+
+    width: 88%;
+    margin: -28px auto 0;
+    padding: 35px 24px 30px;
+
+    background: #ffffff;
+    border-radius: 6px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   CARD HEADING
+========================================================= */
+
+.services-performance-card-body h3 {
+    min-height: 65px;
+    margin: 0 0 20px;
+
+    color: #252525;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   EXPAND BUTTON
+========================================================= */
+
+.services-performance-toggle {
+    position: relative;
+    z-index: 3;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto -62px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   DIAMOND
+========================================================= */
+
+.services-performance-diamond {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #07508c;
+    border-radius: 10px;
+
+    transform: rotate(45deg);
+
+    transition:
+        background 0.3s ease,
+        transform 0.35s ease;
+}
+
+/* =========================================================
+   PLUS / MINUS SYMBOL
+========================================================= */
+
+.services-performance-symbol {
+    display: block;
+
+    color: #ffffff;
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 1;
+
+    transform: rotate(-45deg);
+
+    transition: transform 0.35s ease;
+}
+
+.services-performance-toggle:hover .services-performance-diamond {
+    background: #e51b2b;
+}
+
+.services-performance-toggle:focus-visible {
+    outline: 3px solid #e51b2b;
+    outline-offset: 5px;
+    border-radius: 10px;
+}
+
+/* =========================================================
+   OPEN CARD BUTTON
+========================================================= */
+
+.services-performance-card.is-open .services-performance-diamond {
+    background: #e51b2b;
+}
+
+.services-performance-card.is-open .services-performance-symbol {
+    transform: rotate(-45deg);
+}
+
+/* =========================================================
+   EXPANDABLE DETAILS
+========================================================= */
+
+.services-performance-details {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        grid-template-rows 0.45s ease,
+        opacity 0.35s ease,
+        visibility 0.45s ease;
+}
+
+.services-performance-details-inner {
+    min-height: 0;
+    overflow: hidden;
+
+    text-align: left;
+
+    transition: padding-top 0.45s ease;
+}
+
+.services-performance-card.is-open .services-performance-details {
+    grid-template-rows: 1fr;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+.services-performance-card.is-open .services-performance-details-inner {
+    padding-top: 80px;
+}
+
+/* =========================================================
+   EXPANDED SUBHEADINGS
+========================================================= */
+
+.services-performance-details h4 {
+    margin: 0 0 12px;
+
+    color: #173b70;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.services-performance-details h4:not(:first-child) {
+    margin-top: 27px;
+}
+
+/* =========================================================
+   EXPANDED PARAGRAPHS
+========================================================= */
+
+.services-performance-details p {
+    margin: 0 0 15px;
+
+    color: #777777;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.85;
+}
+
+/* =========================================================
+   EXPANDED LISTS
+========================================================= */
+
+.services-performance-details ul {
+    margin: 0 0 15px;
+    padding-left: 19px;
+
+    color: #777777;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.85;
+}
+
+.services-performance-details li {
+    margin-bottom: 9px;
+}
+
+.services-performance-details li::marker {
+    color: #07508c;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .services-performance-grid {
+        gap: 75px 22px;
+    }
+
+    .services-performance-image {
+        height: 240px;
+    }
+
+    .services-performance-card-body {
+        width: 90%;
+        padding: 30px 18px;
+    }
+
+    .services-performance-card-body h3 {
+        font-size: 19px;
+    }
+
+    .services-performance-details h4 {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .services-performance-section {
+        padding: 25px 0 90px;
+    }
+
+    .services-performance-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 75px 25px;
+    }
+
+    .services-performance-image {
+        height: 250px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .services-performance-section {
+        padding: 20px 0 80px;
+    }
+
+    .services-performance-container {
+        width: 90%;
+    }
+
+    .services-performance-title {
+        font-size: 27px;
+        margin-bottom: 28px;
+    }
+
+    .services-performance-grid {
+        grid-template-columns: 1fr;
+        gap: 75px;
+    }
+
+    .services-performance-image {
+        height: 235px;
+    }
+
+    .services-performance-card-body {
+        width: 90%;
+        padding: 28px 20px 30px;
+    }
+
+    .services-performance-card-body h3 {
+        min-height: auto;
+        font-size: 20px;
+        margin-bottom: 22px;
+    }
+
+    .services-performance-details h4 {
+        font-size: 15px;
+    }
+
+    .services-performance-details p,
+    .services-performance-details ul {
+        font-size: 13.5px;
+        line-height: 1.8;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .services-performance-title {
+        font-size: 24px;
+    }
+
+    .services-performance-image {
+        height: 210px;
+    }
+
+    .services-performance-card-body h3 {
+        font-size: 18px;
+    }
+
+    .services-performance-details h4 {
+        font-size: 14px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .services-performance-card,
+    .services-performance-image img,
+    .services-performance-diamond,
+    .services-performance-symbol,
+    .services-performance-details,
+    .services-performance-details-inner {
+        transition: none;
+    }
+}
+
+
+
+/* =========================================================
+   SERVICES - FINANCIAL MANAGEMENT & INVESTMENTS
+========================================================= */
+
+.services-financial-section {
+    width: 100%;
+    padding: 35px 0 115px;
+    background: #ffffff;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.services-financial-container {
+    width: min(92%, 1050px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.services-financial-title {
+    margin: 0 0 35px;
+
+    color: #252525;
+
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 700;
+
+    line-height: 1.3;
+    letter-spacing: -0.6px;
+}
+
+/* =========================================================
+   GRID - TWO CARDS
+========================================================= */
+
+.services-financial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 35px;
+    align-items: start;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.services-financial-card {
+    position: relative;
+    min-width: 0;
+
+    background: #ffffff;
+    border-radius: 7px;
+
+    transition: transform 0.35s ease;
+}
+
+.services-financial-card:hover {
+    transform: translateY(-5px);
+}
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.services-financial-image {
+    width: 100%;
+    height: 310px;
+
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.services-financial-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.services-financial-card:hover .services-financial-image img {
+    transform: scale(1.05);
+}
+
+/* =========================================================
+   WHITE OVERLAPPING CARD BODY
+========================================================= */
+
+.services-financial-card-body {
+    position: relative;
+    z-index: 2;
+
+    width: 88%;
+    margin: -30px auto 0;
+    padding: 38px 28px 32px;
+
+    background: #ffffff;
+    border-radius: 6px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.services-financial-card-body h3 {
+    min-height: 65px;
+    margin: 0 0 20px;
+
+    color: #252525;
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   PLUS / MINUS BUTTON
+========================================================= */
+
+.services-financial-toggle {
+    position: relative;
+    z-index: 3;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto -62px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   NAVY DIAMOND
+========================================================= */
+
+.services-financial-diamond {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #07508c;
+    border-radius: 10px;
+
+    transform: rotate(45deg);
+
+    transition:
+        background 0.3s ease,
+        transform 0.35s ease;
+}
+
+/* =========================================================
+   SYMBOL
+========================================================= */
+
+.services-financial-symbol {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 1;
+
+    transform: rotate(-45deg);
+}
+
+.services-financial-toggle:hover .services-financial-diamond {
+    background: #e51b2b;
+}
+
+.services-financial-toggle:focus-visible {
+    outline: 3px solid #e51b2b;
+    outline-offset: 5px;
+    border-radius: 10px;
+}
+
+/* =========================================================
+   OPEN CARD STATE
+========================================================= */
+
+.services-financial-card.is-open .services-financial-diamond {
+    background: #e51b2b;
+}
+
+/* =========================================================
+   EXPANDABLE CONTENT
+========================================================= */
+
+.services-financial-details {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        grid-template-rows 0.45s ease,
+        opacity 0.35s ease,
+        visibility 0.45s ease;
+}
+
+.services-financial-details-inner {
+    min-height: 0;
+    overflow: hidden;
+
+    text-align: left;
+
+    transition: padding-top 0.45s ease;
+}
+
+.services-financial-card.is-open .services-financial-details {
+    grid-template-rows: 1fr;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+.services-financial-card.is-open .services-financial-details-inner {
+    padding-top: 80px;
+}
+
+/* =========================================================
+   EXPANDED SUBHEADINGS
+========================================================= */
+
+.services-financial-details h4 {
+    margin: 0 0 12px;
+
+    color: #173b70;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.services-financial-details h4:not(:first-child) {
+    margin-top: 27px;
+}
+
+/* =========================================================
+   EXPANDED PARAGRAPHS
+========================================================= */
+
+.services-financial-details p {
+    margin: 0 0 15px;
+
+    color: #777777;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.85;
+}
+
+/* =========================================================
+   EXPANDED LISTS
+========================================================= */
+
+.services-financial-details ul {
+    margin: 0 0 15px;
+    padding-left: 19px;
+
+    color: #777777;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.85;
+}
+
+.services-financial-details li {
+    margin-bottom: 9px;
+}
+
+.services-financial-details li::marker {
+    color: #07508c;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .services-financial-container {
+        width: 90%;
+    }
+
+    .services-financial-grid {
+        gap: 25px;
+    }
+
+    .services-financial-image {
+        height: 280px;
+    }
+
+    .services-financial-card-body {
+        padding: 32px 24px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .services-financial-section {
+        padding: 25px 0 90px;
+    }
+
+    .services-financial-title {
+        font-size: 30px;
+    }
+
+    .services-financial-grid {
+        gap: 20px;
+    }
+
+    .services-financial-image {
+        height: 240px;
+    }
+
+    .services-financial-card-body {
+        width: 91%;
+        padding: 30px 18px;
+    }
+
+    .services-financial-card-body h3 {
+        font-size: 21px;
+    }
+
+    .services-financial-details h4 {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .services-financial-section {
+        padding: 20px 0 85px;
+    }
+
+    .services-financial-container {
+        width: 90%;
+    }
+
+    .services-financial-title {
+        font-size: 27px;
+        margin-bottom: 28px;
+    }
+
+    .services-financial-grid {
+        grid-template-columns: 1fr;
+        gap: 75px;
+    }
+
+    .services-financial-image {
+        height: 235px;
+    }
+
+    .services-financial-card-body {
+        width: 90%;
+        padding: 28px 20px 30px;
+    }
+
+    .services-financial-card-body h3 {
+        min-height: auto;
+        font-size: 22px;
+        margin-bottom: 22px;
+    }
+
+    .services-financial-details h4 {
+        font-size: 15px;
+    }
+
+    .services-financial-details p,
+    .services-financial-details ul {
+        font-size: 13.5px;
+        line-height: 1.8;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .services-financial-title {
+        font-size: 24px;
+    }
+
+    .services-financial-image {
+        height: 210px;
+    }
+
+    .services-financial-card-body h3 {
+        font-size: 20px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .services-financial-card,
+    .services-financial-image img,
+    .services-financial-diamond,
+    .services-financial-details,
+    .services-financial-details-inner {
+        transition: none;
+    }
+}
+
+
+
+/* =========================================================
+   SERVICES - CONTACT CTA SECTION
+========================================================= */
+
+.services-cta-section {
+    width: 100%;
+    padding: 65px 0;
+    background: #f8f8f8;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.services-cta-container {
+    width: min(88%, 1450px);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.services-cta-title {
+    margin: 0;
+
+    color: #252525;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+/* =========================================================
+   CONTACT BUTTON
+========================================================= */
+
+.services-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 155px;
+    min-height: 55px;
+
+    padding: 15px 26px;
+
+    background: #07508c;
+    color: #ffffff;
+
+    border: 2px solid #07508c;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.services-cta-button:hover {
+    background: #e51b2b;
+    border-color: #e51b2b;
+    color: #ffffff;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(229, 27, 43, 0.15);
+}
+
+.services-cta-button:focus-visible {
+    outline: 3px solid #e51b2b;
+    outline-offset: 4px;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .services-cta-section {
+        padding: 60px 0;
+    }
+
+    .services-cta-container {
+        width: 90%;
+    }
+
+    .services-cta-title {
+        font-size: 30px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .services-cta-section {
+        padding: 55px 0;
+    }
+
+    .services-cta-container {
+        width: 90%;
+        gap: 25px;
+    }
+
+    .services-cta-title {
+        font-size: 27px;
+    }
+
+    .services-cta-button {
+        min-width: 140px;
+        min-height: 50px;
+
+        padding: 13px 22px;
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .services-cta-section {
+        padding: 45px 0;
+    }
+
+    .services-cta-container {
+        width: 90%;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+
+    .services-cta-title {
+        font-size: 23px;
+        line-height: 1.4;
+        letter-spacing: -0.3px;
+    }
+
+    .services-cta-button {
+        min-width: 140px;
+        min-height: 48px;
+
+        padding: 12px 22px;
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .services-cta-title {
+        font-size: 21px;
+    }
+
+    .services-cta-button {
+        min-width: 130px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .services-cta-button {
+        transition: none;
+    }
+}
+
+
+
+/* =========================================================
+   SECTORS - HERO SECTION
+========================================================= */
+
+.sectors-hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 290px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 65px 20px;
+
+    background: linear-gradient(110deg,
+            #173b70 0%,
+            #102d58 50%,
+            #0d2347 100%);
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.sectors-hero-container {
+    width: min(92%, 1200px);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.sectors-hero-title {
+    margin: 0 0 15px;
+
+    color: #ffffff;
+
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.sectors-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    color: #c1cbd9;
+
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.sectors-breadcrumb a {
+    color: #c1cbd9;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.sectors-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.sectors-breadcrumb-separator {
+    color: #899db9;
+    font-weight: 400;
+}
+
+.sectors-breadcrumb [aria-current="page"] {
+    color: #ffffff;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .sectors-hero {
+        min-height: 250px;
+        padding: 55px 20px;
+    }
+
+    .sectors-hero-title {
+        font-size: clamp(36px, 5vw, 48px);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .sectors-hero {
+        min-height: 210px;
+        padding: 45px 16px;
+    }
+
+    .sectors-hero-title {
+        font-size: 36px;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+    }
+
+    .sectors-breadcrumb {
+        font-size: 13px;
+        gap: 11px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .sectors-hero {
+        min-height: 190px;
+        padding: 40px 15px;
+    }
+
+    .sectors-hero-title {
+        font-size: 31px;
+    }
+
+    .sectors-breadcrumb {
+        font-size: 12px;
+    }
+}
+
+
+
+/* =========================================================
+   SECTORS - SECTOR FOCUS INTRO
+========================================================= */
+
+.sectors-focus-section {
+    width: 100%;
+    padding: 90px 20px 85px;
+
+    background: #ffffff;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.sectors-focus-container {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.sectors-focus-title {
+    margin: 0;
+
+    color: #252525;
+
+    font-size: clamp(34px, 3.5vw, 44px);
+    font-weight: 700;
+
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+}
+
+/* =========================================================
+   BLUE UNDERLINE
+========================================================= */
+
+.sectors-focus-line {
+    width: 125px;
+    height: 5px;
+
+    margin: 27px auto 30px;
+
+    background: #173b70;
+    border-radius: 4px;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.sectors-focus-description {
+    max-width: 950px;
+    margin: 0;
+
+    color: #808080;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.9;
+    letter-spacing: 0.05px;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .sectors-focus-section {
+        padding: 80px 25px 75px;
+    }
+
+    .sectors-focus-title {
+        font-size: 40px;
+    }
+
+    .sectors-focus-description {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .sectors-focus-section {
+        padding: 65px 20px 70px;
+    }
+
+    .sectors-focus-title {
+        font-size: 35px;
+    }
+
+    .sectors-focus-line {
+        width: 105px;
+        height: 4px;
+        margin: 22px auto 25px;
+    }
+
+    .sectors-focus-description {
+        font-size: 15px;
+        line-height: 1.85;
+    }
+
+    .sectors-focus-description br {
+        display: none;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .sectors-focus-section {
+        padding: 55px 18px 60px;
+    }
+
+    .sectors-focus-title {
+        font-size: 30px;
+        letter-spacing: -0.5px;
+    }
+
+    .sectors-focus-line {
+        width: 90px;
+        height: 4px;
+        margin: 20px auto 23px;
+    }
+
+    .sectors-focus-description {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .sectors-focus-title {
+        font-size: 27px;
+    }
+
+    .sectors-focus-description {
+        font-size: 13.5px;
+    }
+}
+
+
+
+
+/* =========================================================
+   SECTORS - INDUSTRY CARDS
+========================================================= */
+
+.sectors-grid-section {
+    width: 100%;
+    padding: 25px 0 100px;
+    background: #f8f8f8;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.sectors-grid-container {
+    width: min(92%, 1350px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px 30px;
+    align-items: start;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.sector-card {
+    min-width: 0;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.035);
+
+    overflow: hidden;
+
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.sector-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.09);
+}
+
+.sector-card[open] {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.09);
+}
+
+/* =========================================================
+   SUMMARY / CLICKABLE AREA
+========================================================= */
+
+.sector-card-summary {
+    display: block;
+    cursor: pointer;
+    list-style: none;
+}
+
+.sector-card-summary::-webkit-details-marker {
+    display: none;
+}
+
+.sector-card-summary::marker {
+    content: "";
+}
+
+.sector-card-summary:focus-visible {
+    outline: 3px solid #173b70;
+    outline-offset: -3px;
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.sector-card-summary>img {
+    display: block;
+    width: 100%;
+    height: 260px;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.sector-card:hover .sector-card-summary>img {
+    transform: scale(1.025);
+}
+
+/* =========================================================
+   WHITE TITLE AREA
+========================================================= */
+
+.sector-card-bottom {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    min-height: 125px;
+    padding: 26px 25px;
+
+    gap: 15px;
+
+    background: #ffffff;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.sector-card-title {
+    display: block;
+    flex: 1;
+
+    color: #252525;
+
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    letter-spacing: -0.3px;
+}
+
+/* =========================================================
+   CIRCULAR ARROW
+========================================================= */
+
+.sector-card-arrow {
+    flex-shrink: 0;
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e8e8e8;
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #173b70;
+
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.sector-card-summary:hover .sector-card-arrow {
+    background: #173b70;
+    border-color: #173b70;
+    color: #ffffff;
+}
+
+/* =========================================================
+   OPEN CARD
+========================================================= */
+
+.sector-card[open] .sector-card-arrow {
+    background: #173b70;
+    border-color: #173b70;
+    color: #ffffff;
+
+    transform: rotate(90deg);
+}
+
+/* =========================================================
+   EXPANDED DETAILS
+========================================================= */
+
+.sector-card-details {
+    padding: 10px 25px 30px;
+
+    border-top: 1px solid #eeeeee;
+    background: #ffffff;
+
+    animation: sectorDetailsReveal 0.4s ease both;
+}
+
+@keyframes sectorDetailsReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   DETAILS - PARAGRAPHS
+========================================================= */
+
+.sector-card-details p {
+    margin: 15px 0;
+
+    color: #777777;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.85;
+}
+
+/* =========================================================
+   DETAILS - SUBHEADINGS
+========================================================= */
+
+.sector-card-details h4 {
+    margin: 24px 0 12px;
+
+    color: #173b70;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   DETAILS - LIST
+========================================================= */
+
+.sector-card-details ul {
+    margin: 0;
+    padding-left: 20px;
+
+    color: #777777;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+.sector-card-details li {
+    margin-bottom: 9px;
+}
+
+.sector-card-details li::marker {
+    color: #173b70;
+}
+
+/* =========================================================
+   RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .sectors-grid-container {
+        width: 92%;
+    }
+
+    .sectors-grid {
+        gap: 28px 22px;
+    }
+
+    .sector-card-summary>img {
+        height: 225px;
+    }
+
+    .sector-card-bottom {
+        min-height: 115px;
+        padding: 23px 20px;
+    }
+
+    .sector-card-title {
+        font-size: 17px;
+    }
+
+    .sector-card-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 23px;
+    }
+
+    .sector-card-details {
+        padding: 10px 20px 25px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sectors-grid-section {
+        padding: 20px 0 80px;
+    }
+
+    .sectors-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+
+    .sector-card-summary>img {
+        height: 240px;
+    }
+
+    .sector-card-bottom {
+        min-height: 110px;
+    }
+
+    .sector-card-title {
+        font-size: 18px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .sectors-grid-section {
+        padding: 15px 0 65px;
+    }
+
+    .sectors-grid-container {
+        width: 90%;
+    }
+
+    .sectors-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .sector-card-summary>img {
+        height: 240px;
+    }
+
+    .sector-card-bottom {
+        min-height: 95px;
+        padding: 22px 20px;
+    }
+
+    .sector-card-title {
+        font-size: 18px;
+    }
+
+    .sector-card-arrow {
+        width: 43px;
+        height: 43px;
+        font-size: 22px;
+    }
+
+    .sector-card-details {
+        padding: 10px 20px 25px;
+    }
+
+    .sector-card-details p,
+    .sector-card-details ul {
+        font-size: 13.5px;
+    }
+
+    .sector-card-details h4 {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .sector-card-summary>img {
+        height: 205px;
+    }
+
+    .sector-card-title {
+        font-size: 16px;
+    }
+
+    .sector-card-bottom {
+        padding: 20px 16px;
+    }
+
+    .sector-card-details {
+        padding: 10px 16px 22px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sector-card,
+    .sector-card-summary>img,
+    .sector-card-arrow {
+        transition: none;
+    }
+
+    .sector-card-details {
+        animation: none;
+    }
+}
